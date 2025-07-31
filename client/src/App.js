@@ -12,7 +12,8 @@ function App() {
 
   const fetchBatch = useCallback(
     async (reset = false) => {
-      if (loading) return;
+      if (loading && !reset) return;
+
       setLoading(true);
       const currentOffset = reset ? 0 : offset;
       const response = await fetch(
